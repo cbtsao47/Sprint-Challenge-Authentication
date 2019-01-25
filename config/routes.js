@@ -20,8 +20,8 @@ async function register(req, res) {
     } else {
       const hash = bcrypt.hashSync(userInfo.password);
       userInfo.password = hash;
-      const result = await db("users").insert(userInfo);
-      res.status(201).json({ message: "User created" });
+      const id = await db("users").insert(userInfo);
+      res.status(201).json({ message: `User created, id:${id} ` });
     }
   } catch (err) {
     res.status(500).json({

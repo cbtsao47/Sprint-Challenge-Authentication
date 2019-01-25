@@ -21,15 +21,15 @@ class App extends Component {
         authorization: token
       }
     };
-    axios.get(`${URL}/api/jokes`, requestOptions).then(
-      res => console.log(res)
-      // this.setState({
-      //   ...state,
-      //   jokes:res.data.jokes
-      // })
+    axios.get(`${URL}/api/jokes`, requestOptions).then(res =>
+      this.setState({
+        ...this.state,
+        jokes: res.data
+      })
     );
   };
   handleLogout = () => {
+    localStorage.removeItem("JWT");
     this.setState({ isLoggedIn: false });
   };
   handleLogIn = () => {
@@ -42,7 +42,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <Nav />
+          <Nav handleLogout={this.handleLogout} />
         </header>
         <main>
           <Route

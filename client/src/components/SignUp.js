@@ -12,13 +12,14 @@ class SignUp extends React.Component {
     });
   };
   handleSubmit = e => {
-    const URL = process.env.REACT_APP_API_URL;
     e.preventDefault();
+    const URL = process.env.REACT_APP_API_URL;
     axios
       .post(`${URL}/api/register`, this.state)
       .then(res => {
+        console.log(res, "signup");
         localStorage.setItem("JWT", res.data.token);
-        this.props.history.push("/jokes");
+        this.props.history.push("/api/login");
       })
       .catch(err => console.error(err));
   };

@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const Nav = props => {
   return (
@@ -10,6 +10,11 @@ const Nav = props => {
         </li>
         <li>
           <NavLink to="/login">Sign In</NavLink>
+        </li>
+        <li>
+          <Link to="/login">
+            <button onClick={props.handleLogout}>Log Out</button>
+          </Link>
         </li>
       </ul>
     </nav>
