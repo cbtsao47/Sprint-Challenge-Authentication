@@ -18,6 +18,7 @@ class SignIn extends React.Component {
       .post(`${URL}/api/login`, this.state)
       .then(res => {
         localStorage.setItem("JWT", res.data.token);
+        this.props.handleLogIn();
         this.props.history.push("/jokes");
       })
       .catch(err => console.error(err));

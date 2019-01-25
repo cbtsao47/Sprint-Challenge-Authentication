@@ -14,7 +14,7 @@ class Jokes extends React.Component {
       return (
         <>
           {this.props.jokes.map(joke => (
-            <JokeCard key={joke.id} joke={joke.joke} />
+            <JokeCard key={joke.id} joke={joke} />
           ))}
         </>
       );
