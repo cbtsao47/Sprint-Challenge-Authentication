@@ -1,5 +1,6 @@
 import React from "react";
 import JokeCard from "./JokeCard.js";
+import SignIn from "./SignIn";
 class Jokes extends React.Component {
   async componentDidMount() {
     const URL = process.env.REACT_APP_API_URL;
@@ -10,13 +11,17 @@ class Jokes extends React.Component {
     }
   }
   render() {
-    return (
-      <>
-        {this.props.jokes.map(joke => (
-          <JokeCard key={joke.id} joke={joke} />
-        ))}
-      </>
-    );
+    if (this.props.isLoggedIn) {
+      return (
+        <>
+          {this.props.jokes.map(joke => (
+            <JokeCard key={joke.id} joke={joke.joke} />
+          ))}
+        </>
+      );
+    } else {
+      return <SignIn />;
+    }
   }
 }
 export default Jokes;
