@@ -3,7 +3,6 @@ import JokeCard from "./JokeCard.js";
 import SignIn from "./SignIn";
 class Jokes extends React.Component {
   async componentDidMount() {
-    const URL = process.env.REACT_APP_API_URL;
     try {
       this.props.getJokes();
     } catch (err) {
